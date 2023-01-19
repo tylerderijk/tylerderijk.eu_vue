@@ -7,14 +7,14 @@
   <div class="section--page">
     <main class="section--intro">
       <div class="position-relative text-center mt-3 logo">
-                <router-link to="/">
-        <img class="logoImg slow-opacity" src="../assets/img/tylerLogo.png" alt="">
-                </router-link>
-        <h1 class="logoName slow-opacity mt-1">Tyler Anthony de Rijk</h1>
-        <h2 class="logoText slow-opacity">Full-stack developer 👨🏻‍💻</h2>
+        <router-link to="/">
+          <img class="logoImg slow-opacity" src="../assets/img/tylerLogo.png" alt="">
+        </router-link>
+        <h1 class="logoName slow-opacity mt-1" v-if="this.showLogoText">Tyler Anthony de Rijk</h1>
+        <h2 class="logoText slow-opacity" v-if="this.showLogoText">Full-stack developer 👨🏻‍💻</h2>
       </div>
       <router-view/>
-        <button class="menu--button" @click="toggleNav()">MENU</button>
+      <button class="menu--button" @click="toggleNav()">MENU</button>
     </main>
     <nav>
       <div id="nav-links">
@@ -48,7 +48,7 @@
           </p>
         </router-link>
         <router-link class="nav-link" to="/contact">
-          <p class="nav-text2">
+          <p class="nav-text">
             CON
             TAC
             T
@@ -71,6 +71,7 @@ export default {
   name: "HomeComp",
   data() {
     return {
+      showLogoText: true,
       showNav: false,
       loading_msg: null,
       progress: {
@@ -82,24 +83,28 @@ export default {
   watch: {
     '$route'() {
       document.body.dataset.nav = "false";
+      console.log('routechange')
+      this.checkRoute();
     }
   },
-  beforeCreate() {
+  beforeUpdate() {
   },
   created() {
     this.loading_msg = loading_messages[Math.floor(Math.random() * 261)];
     if (this.loading) {
       window.setInterval(() => {
         this.loading_msg = loading_messages[Math.floor(Math.random() * 261)];
-      }, 1100)
+      }, 600)
     }
+    // this.checkRoute();
   },
   mounted() {
+    this.checkRoute();
     setTimeout(() => {
       this.startOpening();
-    }, 1400)
+    }, 900)
     anime({
-      delay: 1400,
+      delay: 900,
       targets: this.progress,
       charged: '110%',
       round: 1,
@@ -107,21 +112,21 @@ export default {
       duration: 4000
     });
     anime({
-      delay: 1400,
+      delay: 900,
       targets: '.progress',
-      translateY: [1, 1, 1, 20],
-      easing: 'easeInOutQuad',
+      opacity: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+      easing: 'linear',
       duration: 4000
     });
     anime({
-      delay: 1500,
+      delay: 300,
       targets: '.slow-opacity',
-      opacity: [0, 0, 0, 1],
+      opacity: [-1, -1, -1, 1],
       easing: 'easeInOutQuad',
-      duration: 4000,
+      duration: 3000,
     });
     anime({
-      delay: 3000,
+      delay: 2000,
       targets: '.menu--button',
       translateY: [200, 0],
       translateX: [-50, -50, -50],
@@ -136,6 +141,15 @@ export default {
     toggleNav() {
       document.body.dataset.nav = document.body.dataset.nav === "true" ? "false" : "true";
     },
+    checkRoute() {
+      if (this.$route.matched[1].path === '/') {
+        this.showLogoText = true;
+        console.log(true)
+      } else {
+        this.showLogoText = false;
+        console.log(false)
+      }
+    }
   }
 }
 </script>
@@ -166,19 +180,20 @@ main {
 }
 
 .logoImg {
-  opacity: 0;
   height: 130px;
 }
 
 .logoName {
   font-size: x-large;
-  opacity: 0;
   font-weight: 200;
 }
 
 .logoText {
-  opacity: 0;
   font-size: large;
+}
+
+.slow-opacity {
+  opacity: 1;
 }
 
 .progress-bar, .progress {
@@ -231,7 +246,7 @@ nav {
   line-height: 0.7;
   text-align: left;
   font-weight: bold;
-  font-size: 190px;
+  font-size: clamp(70px, 190px, 190px);
   width: fit-content;
 }
 
@@ -359,11 +374,40 @@ button:active {
 @media (max-width: 1210px) {
   .overlay {
     border-radius: 12px;
-
   }
+
   #nav-links {
     justify-content: flex-start;
+    align-items: center;
     gap: 8%;
+  }
+
+  .nav-text {
+    font-size: 110px;
+    line-height: 0.8;
+    margin-top: 5px;
+  }
+
+  .nav-text2 {
+    margin-top: 20px;
+    font-size: 90px;
+    line-height: 0.8;
+  }
+
+  nav {
+    height: auto;
+    overflow: scroll;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .menu--button {
+    bottom: 2rem;
+  }
+
+  .nav-link {
+    display: flex;
+    /*justify-content: center;*/
   }
 
   /*  .block--about {*/

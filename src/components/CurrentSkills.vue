@@ -1,9 +1,9 @@
 <template>
   <div class="container overlay block--about">
     <div class="block--about-text">
-      <h3 class="text-success skills">My current skills <svg width="40" height="40" fill="mediumseagreen" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10.8 5.765A9.562 9.562 0 0 0 6.6 4.8a9.58 9.58 0 0 0-4.2.965v12a9.563 9.563 0 0 1 4.2-.965c2.003 0 3.862.612 5.4 1.662a9.554 9.554 0 0 1 5.4-1.662 9.58 9.58 0 0 1 4.2.965v-12a9.561 9.561 0 0 0-4.2-.965 9.58 9.58 0 0 0-4.2.965V14.4a1.2 1.2 0 1 1-2.4 0V5.765Z"></path>
-      </svg></h3>
+<!--      <h3 class="text-success skills">My current skills <svg width="40" height="40" fill="mediumseagreen" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
+<!--        <path d="M10.8 5.765A9.562 9.562 0 0 0 6.6 4.8a9.58 9.58 0 0 0-4.2.965v12a9.563 9.563 0 0 1 4.2-.965c2.003 0 3.862.612 5.4 1.662a9.554 9.554 0 0 1 5.4-1.662 9.58 9.58 0 0 1 4.2.965v-12a9.561 9.561 0 0 0-4.2-.965 9.58 9.58 0 0 0-4.2.965V14.4a1.2 1.2 0 1 1-2.4 0V5.765Z"></path>-->
+<!--      </svg></h3>-->
       <table class="table">
         <tbody>
         <tr>
@@ -60,11 +60,13 @@ table {
 }
 
 .block--about {
-  align-items: flex-start;
   max-height: 500px;
   min-height: 400px;
   flex-direction: row;
   width: 60%;
+  /*display: flex;*/
+  /*justify-content: center;*/
+  align-items: center;
 }
 
 .block--about-text {
@@ -73,7 +75,8 @@ table {
   width: 50%;
   /*min-width: 50%;*/
   font-size: 18px;
-  min-height: auto;
+  height: 100%;
+
 }
 
 .block--about-image {

@@ -1,7 +1,7 @@
 <template>
   <div class="container overlay block--about">
     <div class="block--about-text">
-      <h3 class="text-success">Work experience</h3>
+<!--      <h3 class="text-success">Work experience</h3>-->
       <ul class="timeline">
         <li>
           <h5><strong>Full-stack developer</strong></h5>
@@ -90,7 +90,7 @@ ul.timeline > li:before {
   z-index: 400;
 }
 .block--about {
-  align-items: flex-start;
+  align-items: center;
   max-height: 500px;
   min-height: 400px;
   flex-direction: row;

@@ -45,22 +45,22 @@ export default {
       duration: 6000,
     });
     anime({
-      delay: 3500,
+      delay: 3000,
       targets: '.heroIpad',
       translateY: [-20, -20, 0],
       rotate: [0, 3, 0, 0],
       opacity: [0, 1, 1, 1],
       easing: 'easeInOutQuad',
-      duration: 2200,
+      duration: 1800,
     });
     anime({
       delay: 500,
       targets: '.hero--text',
-      opacity: [1, 1, 1, 1, 1, 1, 0],
-      translateY: [1, 1, 1, 1, 1, 1, 120],
+      opacity: [1, 1, 1, 1, 0],
+      translateY: [1, 1, 1, 1, 120],
       // translateX: [20, 20],
       easing: 'easeInOutSine',
-      duration: 3200,
+      duration: 2000,
     });
   },
   methods: {

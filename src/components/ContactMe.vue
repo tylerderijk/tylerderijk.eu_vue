@@ -1,7 +1,7 @@
 <template>
   <div class="container overlay block--about">
     <div class="block--about-text">
-      <h3 class="text-success mt-4">Contact me 🗞️</h3>
+<!--      <h3 class="text-success mt-4">Contact me 🗞️</h3>-->
       <table class="table">
         <thead>
         <tr>
